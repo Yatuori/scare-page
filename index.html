@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>催眠鬼脸</title>
+  <style>
+    body {
+      margin: 0; background: black; display: flex; justify-content: center; align-items: center; height: 100vh;
+      overflow: hidden;
+      flex-direction: column;
+    }
+    #hypnosis {
+      width: 200px;
+      display: block;
+    }
+    #scary-face {
+      width: 300px;
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: shake 0.5s infinite;
+      z-index: 10;
+    }
+    @keyframes shake {
+      0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+      25% { transform: translate(-48%, -52%) rotate(-10deg); }
+      50% { transform: translate(-52%, -48%) rotate(10deg); }
+      75% { transform: translate(-48%, -52%) rotate(-10deg); }
+    }
+  </style>
+</head>
+<body>
+  <img id="hypnosis" src="hypnosis.gif" alt="催眠圈" />
+  <img id="scary-face" src="scary-face.png" alt="鬼脸" />
+  <audio id="scream" src="scream.mp3" preload="auto"></audio>
+
+  <script>
+    document.body.addEventListener('click', () => {
+      setTimeout(() => {
+        document.getElementById('hypnosis').style.display = 'none';
+        document.getElementById('scary-face').style.display = 'block';
+        document.getElementById('scream').play();
+      }, 3000);
+    }, { once: true });
+  </script>
+</body>
+</html>
